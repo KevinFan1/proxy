@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  proxy_pool:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manager.py
+    volumes:
+      - .:/proxy_pool
+    ports:
+      - 5001:5000
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    command: redis-server --requirepass sAED82wtKTqk1gSvnaOKRmBwLKuOViZx
+    ports:
+      - 6379:6379
