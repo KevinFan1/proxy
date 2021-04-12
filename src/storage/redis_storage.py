@@ -34,9 +34,6 @@ class RedisClient:
 
     def decrease(self, proxy):
         score = self.db.zscore(REDIS_KEY, proxy)
-        if score - MIN_SCORE == 0:
-            return self.db.zrem(REDIS_KEY, proxy)
-
         if score and score > MIN_SCORE:
             # 减分
             logger.info(f'{proxy} current score : {score}, -1')

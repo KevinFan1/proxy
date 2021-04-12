@@ -35,7 +35,7 @@ class Scheduler:
         uvicorn.run(
             app='src.processor.server:app',
             host='0.0.0.0',
-            port=5000,
+            port=5003,
             reload=True,
             workers=int(cpu_count()) - 1,
             debug=False,
